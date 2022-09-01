@@ -12,6 +12,7 @@ node{
         sh "${MavenHome}/bin/mvn clean package"
         
     }
+    /*
     stage('ExecutethesonarqubeReport'){
         sh "${MavenHome}/bin/mvn clean sonar:sonar"
     }
@@ -25,4 +26,5 @@ node{
     }
         
     }
+    */
 }//Node Closing
