@@ -10,7 +10,7 @@ node{
     slackNotifications('STARTED')
     
     stage('checkoutcode'){
-        git branch: 'devlopment', credentialsId: '49ff1f14-2754-4914-b25e-5b7e9ada9f63', url: 'https://github.com/nms-ec-julybatch/maven-web-application.git'
+        git branch: 'development', credentialsId: '49ff1f14-2754-4914-b25e-5b7e9ada9f63', url: 'https://github.com/nms-ec-julybatch/maven-web-application.git'
     }
     stage('Build'){
         sh "${MavenHome}/bin/mvn clean package"
