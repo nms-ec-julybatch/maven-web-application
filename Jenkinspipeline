@@ -4,7 +4,8 @@ node{
     echo "Node Name is: ${env.NODE_NAME}"
     echo "Job name is: ${env.JOB_NAME}"
     
-    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+   properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+    
     try{
     stage('checkoutcode'){
         git branch: 'development', credentialsId: '49ff1f14-2754-4914-b25e-5b7e9ada9f63', url: 'https://github.com/nms-ec-julybatch/maven-web-application.git'
