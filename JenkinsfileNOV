@@ -40,7 +40,7 @@ node{
     */
     }//try block closing
     catch (e){
-    slackNotifications(currentBuild.result)
+    slackNotifications('FAILED')
     throw e 
     }
     finally{
