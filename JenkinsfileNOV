@@ -54,7 +54,9 @@ node{
 
 def slackNotifications(String buildStatus = 'STARTED') {
   // build status of null means successful
-  buildStatus =  buildStatus ?: 'SUCCESS'
+  //buildStatus =  buildStatus ?: 'SUCCESS'
+  buildStatus =  buildStatus ?: "SUCCESSFUL":"FAILURE"
+
 
   // Default values
   def colorName = 'RED'
