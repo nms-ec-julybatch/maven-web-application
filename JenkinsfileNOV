@@ -17,7 +17,7 @@ node{
         
        sh  "${mavenHome}/bin/mvn clean package"
     }
-    /*
+    
     stage('Execute The SonarQube Report'){
         
         sh "${mavenHome}/bin/mvn clean sonar:sonar"
@@ -37,7 +37,7 @@ node{
 }
         
     } 
-    */
+   
     }//try block closing
     catch (e){
     slackNotifications('FAILED')
