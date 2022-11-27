@@ -1,0 +1,37 @@
+node{
+    
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+    def mavenHome = tool name : "maven3.8.6"
+    echo "Jenkins url is: ${env.JENKINS_URL}"
+    echo "Node Name is: ${env.NODE_NAME}"
+    echo "Job Name is: ${env.JOB_NAME}"
+    
+    stage('CheckoutCode'){
+        git branch: 'development', credentialsId: 'b432721f-3113-42b5-9dd4-cecc20eb7bd4', url: 'https://github.com/nms-ec-julybatch/maven-web-application.git'
+    }
+    
+    stage('Build'){
+        
+       sh  "${mavenHome}/bin/mvn clean package"
+    }
+    /*
+    stage('Execute The SonarQube Report'){
+        
+        sh "${mavenHome}/bin/mvn clean sonar:sonar"
+    }
+    
+    stage('Upload Artifactory Into Artifactory Repo'){
+        
+        sh "${mavenHome}/bin/mvn clean deploy"
+    }
+    
+    stage('Deploy App Into Tomcat Server'){
+        
+        sshagent(['95b8269b-2172-487a-a705-a7c7f6d32ae4']) {
+     
+         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@172.31.15.108:/opt/apache-tomcat-9.0.69/webapps/"
+    
+}
+        
+    } */
+}//Node Closing
